@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Quizzes</title>
+	        <meta name="description" content="Ejemplo un juego de preguntas tipo trivial que utiliza Javascript en el que tanto las preguntas como las respuestas se van reordenando aleatoriamente">
+<link rel="stylesheet" href="Estilos4.css">
+<!-- Latest compiled and minified JS -->
+<script src="https://code.jquery.com/jquery.js"></script>
+
+
+</head>
+<body>
+	<header>
+			<h1>Quizz</h1>
+	</header>	
+	
+	<div id="general">
+		
+	</div>
+	
+
+	<div id="pregunta"></div>
+	<div id="respuestas"></div>
+
+<input type="button" value="Aceptar" onclick="comprobar()">
+
+	<script>
+		var preguntas = [
+		"¿cuales son las cordenadas de Wiwili ?",
+		"¿Cuales son las localidades de Wiwili N,S?"
+		
+
+		];
+		var respuestas = [
+		["Al norte con Honduras,al sur y este con el municipio Wiwili Jinotega,al oeste con los municipios de Quilali y Murra", "Al norte con Wiwili Jinotega,al sur y este con el municipio Quilali,al oeste con el municipio Murra", "Al norte con Chachagua,al sur y este con el municipio Quilali,al oeste con el municipio Murra", "Ninguna de las anteriores"],
+		["46 comunidades rurales y 7 barrios del area urbana", "43 comunidades rurales y 8 barrios del area urbana", "48 comunidades rurales y 9 barrios del area urbana", "33 comunidades rurales y 10 barrios del area urbana"]
+		
+		]; 
+		
+    
+jugar();
+
+
+		var indicie_respuesta_correcta;
+
+function jugar(){
+			var indice_aleatorio = Math.floor(Math.random()*preguntas.length);
+
+
+		var respuestas_posibles = respuestas[indice_aleatorio];
+
+
+		var posiciones = [0,1,2,3];
+		var respuestas_reordenadas = [];
+
+		var ya_se_metio = false;
+		for(i in respuestas_posibles){
+			var posicion_aleatoria = Math.floor(Math.random()*posiciones.length);
+			if(posicion_aleatoria==0 && ya_se_metio == false){
+				indicie_respuesta_correcta =i;
+				ya_se_metio = true;
+			}
+			respuestas_reordenadas[i] = respuestas_posibles[posiciones[posicion_aleatoria]];
+			posiciones.splice(posicion_aleatoria, 1);
+		}
+
+		var txt_respuestas="";
+		for(i in respuestas_reordenadas){
+			txt_respuestas += '<input type="radio" name="pp" value="'+i+'"><label>'+respuestas_reordenadas[i]+'</label><br>';
+		}
+
+		document.getElementById("respuestas").innerHTML = txt_respuestas;
+		document.getElementById("pregunta").innerHTML = preguntas[indice_aleatorio];
+
+}
+function comprobar(){
+	var respuesta = $("input[type=radio]:checked").val();
+
+	//alert(respuesta);
+	//alert(indicie_respuesta_correcta);
+	if(respuesta ==indicie_respuesta_correcta){
+		alert("que bien!");
+	}else{
+		alert("respuesta incorrecta");
+	}
+	jugar();
+}
+	</script>
+	 <a href="index.html"><input type="button" value="VOLVER"></a>
+
+</body>
+</html>

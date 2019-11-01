@@ -1,0 +1,44 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+div#general{
+margin: auto;
+width: 60px;
+height:70px;
+
+}
+
+h1{
+    font-size: 60px;
+    font-family:Georgia;
+    font-weight: bold;
+
+    
+  
+}
+header{
+    width:100%;
+    overflow: hidden;
+    background: #922525;
+    margin-bottom: 20px;
+}
+
+body{
+   text-align: center;
+  background-image: url("imag/images\ \(1\).jpg");
+  background-repeat: no-repeat;
+ background-size: 100% 100%;
+ background-attachment: fixed;
+
+ 
+}
+
+header{
+    width:100%;
+    overflow: hidden;
+    background: #255292;
+}
+
+
+
